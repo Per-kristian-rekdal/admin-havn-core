@@ -1,4 +1,4 @@
-```php
+
 <?php
 
 function ah_havnekart_shortcode(){
@@ -35,4 +35,5 @@ function ah_havnekart_shortcode(){
 }
 
 add_shortcode("havnekart","ah_havnekart_shortcode");
-```
+
+
