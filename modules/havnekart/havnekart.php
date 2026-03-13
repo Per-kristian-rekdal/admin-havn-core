@@ -85,4 +85,16 @@ function ah_havnekart_admin(){
 require_once AH_PLUGIN_PATH.'modules/havnekart/havnekart-admin.php';
 
 }
+add_action('wp_ajax_ah_save_map','ah_save_map');
+
+function ah_save_map(){
+
+if(!current_user_can('manage_options')) exit;
+
+update_option('ah_havnekart_image', intval($_POST['map_id']));
+
+wp_die();
+
+}
+
 
