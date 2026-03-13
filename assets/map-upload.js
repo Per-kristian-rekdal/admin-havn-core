@@ -2,9 +2,14 @@ jQuery(document).ready(function($){
 
 var frame;
 
-$('#upload_map_button').click(function(e){
+$('#ah_select_map').on('click', function(e){
 
 e.preventDefault();
+
+if(frame){
+frame.open();
+return;
+}
 
 frame = wp.media({
 title: 'Velg havnekart',
@@ -16,8 +21,7 @@ frame.on('select', function(){
 
 var attachment = frame.state().get('selection').first().toJSON();
 
-$('#map_image_id').val(attachment.id);
-$('#map_preview').attr('src',attachment.url);
+$('#ah_havnekart_image').val(attachment.id);
 
 });
 
