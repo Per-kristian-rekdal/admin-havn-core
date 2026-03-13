@@ -4,6 +4,20 @@ if (!defined('ABSPATH')) exit;
 
 add_action('admin_menu','ah_havnekart_menu');
 
+add_action('admin_enqueue_scripts', function(){
+
+wp_enqueue_media();
+
+wp_enqueue_script(
+'ah-map-upload',
+AH_PLUGIN_URL.'assets/map-upload.js',
+['jquery'],
+null,
+true
+);
+
+});
+
 function ah_havnekart_menu(){
 
 add_menu_page(
@@ -71,3 +85,4 @@ function ah_havnekart_admin(){
 require_once AH_PLUGIN_PATH.'modules/havnekart/havnekart-admin.php';
 
 }
+
