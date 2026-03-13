@@ -1,6 +1,37 @@
 
 <?php
+if (!defined('ABSPATH')) exit;
 
+add_action('admin_menu','ah_havnekart_menu');
+
+function ah_havnekart_menu(){
+
+add_menu_page(
+'Admin Havn',
+'Admin Havn',
+'manage_options',
+'admin-havn',
+'ah_admin_dashboard',
+'dashicons-admin-site',
+3
+);
+
+add_submenu_page(
+'admin-havn',
+'Havnekart',
+'Havnekart',
+'manage_options',
+'admin-havn-havnekart',
+'ah_havnekart_admin'
+);
+
+}
+function ah_admin_dashboard(){
+
+echo "<h1>Admin Havn</h1>";
+echo "<p>Administrasjon av småbåthavn.</p>";
+
+}
 function ah_havnekart_shortcode(){
 
     // hent valgt kart fra Media Library
@@ -35,5 +66,8 @@ function ah_havnekart_shortcode(){
 }
 
 add_shortcode("havnekart","ah_havnekart_shortcode");
+function ah_havnekart_admin(){
 
+require_once AH_PLUGIN_PATH.'modules/havnekart/havnekart-admin.php';
 
+}
