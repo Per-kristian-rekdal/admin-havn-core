@@ -1,6 +1,6 @@
 jQuery(document).ready(function($){
 
-var frame;
+let frame;
 
 $('#ah_select_map').on('click', function(e){
 
@@ -19,9 +19,16 @@ multiple: false
 
 frame.on('select', function(){
 
-var attachment = frame.state().get('selection').first().toJSON();
+let attachment = frame.state().get('selection').first().toJSON();
 
-$('#ah_havnekart_image').val(attachment.id);
+$.post(ajaxurl, {
+action: 'ah_save_map',
+map_id: attachment.id
+}, function(){
+
+location.reload();
+
+});
 
 });
 
