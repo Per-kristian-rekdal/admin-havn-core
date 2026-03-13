@@ -1,4 +1,20 @@
 <?php
+
+$map_id = get_option('ah_havnekart_image');
+$map_url = $map_id ? wp_get_attachment_url($map_id) : '';
+?>
+
+<h2>Kartbilde</h2>
+
+<input type="hidden" id="ah_havnekart_image" name="ah_havnekart_image" value="<?php echo esc_attr($map_id); ?>">
+
+<button class="button" id="ah_select_map">Velg kart</button>
+
+<br><br>
+
+<?php if($map_url): ?>
+<img src="<?php echo esc_url($map_url); ?>" style="max-width:100%;">
+<?php endif; ?>
 if (!defined('ABSPATH')) exit;
 ?>
 
