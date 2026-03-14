@@ -23,7 +23,7 @@ $map_url = $map_id ? wp_get_attachment_url($map_id) : '';
 
 <img
 src="<?php echo esc_url($map_url); ?>"
-style="width:100%;display:block"
+style="width:100%;display:block;cursor:crosshair"
 id="havnekart-base">
 
 </div>
@@ -46,17 +46,43 @@ foreach($piers as $pir){
 
 <h3>Pir <?php echo $pir; ?></h3>
 
-<button class="button">Velg start</button>
-<button class="button">Velg slutt</button>
+<button class="button set-start" data-pir="<?php echo $pir; ?>">
+Velg start
+</button>
 
-<p>Start:</p>
-<p>Slutt:</p>
+<button class="button set-end" data-pir="<?php echo $pir; ?>">
+Velg slutt
+</button>
 
-<label>Pir bredde (meter)</label>
-<input type="text">
+<br><br>
 
-<label>Pir lengde (meter)</label>
-<input type="text">
+<label>Start:</label><br>
+<input 
+type="text" 
+id="pir-<?php echo $pir; ?>-start"
+style="width:300px"
+readonly
+>
+
+<br><br>
+
+<label>Slutt:</label><br>
+<input 
+type="text" 
+id="pir-<?php echo $pir; ?>-end"
+style="width:300px"
+readonly
+>
+
+<br><br>
+
+<label>Pir bredde (meter)</label><br>
+<input type="text" style="width:150px">
+
+<br><br>
+
+<label>Pir lengde (meter)</label><br>
+<input type="text" style="width:150px">
 
 <hr>
 
@@ -64,6 +90,8 @@ foreach($piers as $pir){
 }
 ?>
 
-<button class="button button-primary">Lagre pirer</button>
+<button class="button button-primary">
+Lagre pirer
+</button>
 
 </div>
